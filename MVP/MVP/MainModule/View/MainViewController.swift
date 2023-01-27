@@ -9,30 +9,54 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    @IBOutlet var greetingLabel: UILabel!
-    @IBOutlet var colorView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
     var presenter: MainViewPresenterProtocol!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
-    @IBAction func didTappedButton(_ sender: Any) {
-        self.presenter.showGreeting()
-        self.presenter.changeColor()
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let comment = presenter.comments?[indexPath.row]
+        let detailViewController = ModuleBuilder.createDetailModule(comment: comment)
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
-extension MainViewController: MainViewProtocol {
-    func setColor(color: UIColor) {
-        self.colorView.backgroundColor = color
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.comments?.count ?? 0
     }
     
-    func setGreeting(greeting: String) {
-        self.greetingLabel.text = greeting
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let comment = presenter.comments?[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = comment?.body
+        cell.contentConfiguration = content
+        return cell
     }
+   
+    
+    
+}
+
+extension MainViewController: MainViewProtocol {
+    func success() {
+        tableView.reloadData()
+    }
+    
+    func failure(error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    
+    
  
 }
 

@@ -26,12 +26,12 @@ class MockView: MainViewProtocol {
 final class MainPresenterTest: XCTestCase {
 
     var view: MockView!
-    var model: Person!
+    var model: Comment!
     var presenter: MainPresenter!
     
     override func setUpWithError() throws {
         view = MockView()
-        model = Person(firstName: "Baz", lastName: "Bar", color: UIColor.systemBlue)
+        model = Comment(firstName: "Baz", lastName: "Bar", color: UIColor.systemBlue)
         presenter = MainPresenter(view: view, person: model)
     }
 

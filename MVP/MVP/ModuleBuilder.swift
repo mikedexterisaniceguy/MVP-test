@@ -10,14 +10,23 @@ import UIKit
 // Команда может называть этот файл Assembly или Builder
 
 protocol Builder {
-    static func buildModule() -> UIViewController
+    static func createMainModule() -> UIViewController
+    static func createDetailModule(comment: Comment?) -> UIViewController
 }
 
 class ModuleBuilder: Builder {
-    static  func buildModule() -> UIViewController  {
-        let model = Person(firstName: "Kirill", lastName: "Maksimov", color: UIColor.purple)
+    static  func createMainModule() -> UIViewController  {
         let view = MainViewController()
-        let presenter = MainPresenter(view: view, person: model)
+        let networkService = NetworkService()
+        let presenter = MainPresenter(view: view, networkService: networkService)
+        view.presenter = presenter
+        return view
+    }
+    
+    static func createDetailModule(comment: Comment?) -> UIViewController {
+        let view = DetailViewController()
+        let networkService = NetworkService()
+        let presenter = DetailPresenter(view: view, networkService: networkService, comment: comment)
         view.presenter = presenter
         return view
     }
