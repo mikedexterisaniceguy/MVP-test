@@ -20,6 +20,7 @@
 		9D0C12192983DA980093AA96 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C12182983DA980093AA96 /* MainPresenter.swift */; };
 		9D0C12202983DFEB0093AA96 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D0C121F2983DFEB0093AA96 /* MainViewController.xib */; };
 		9D0C12222983E15E0093AA96 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C12212983E15E0093AA96 /* ModuleBuilder.swift */; };
+		9D0C12242983EA770093AA96 /* MainPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0C12232983EA770093AA96 /* MainPresenterTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		9D0C12182983DA980093AA96 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		9D0C121F2983DFEB0093AA96 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		9D0C12212983E15E0093AA96 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		9D0C12232983EA770093AA96 /* MainPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				9D0C11FD2983DA740093AA96 /* MVPTests.swift */,
+				9D0C12252983EA7E0093AA96 /* MainModelTest */,
 			);
 			path = MVPTests;
 			sourceTree = "<group>";
@@ -169,6 +172,14 @@
 				9D0C12162983DA7E0093AA96 /* Person.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9D0C12252983EA7E0093AA96 /* MainModelTest */ = {
+			isa = PBXGroup;
+			children = (
+				9D0C12232983EA770093AA96 /* MainPresenterTest.swift */,
+			);
+			path = MainModelTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D0C11FE2983DA740093AA96 /* MVPTests.swift in Sources */,
+				9D0C12242983EA770093AA96 /* MainPresenterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
