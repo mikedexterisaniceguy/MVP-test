@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = 50
     }
     
 }
@@ -23,9 +24,11 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let comment = presenter.comments?[indexPath.row]
-        let detailViewController = ModuleBuilder.createDetailModule(comment: comment)
-        navigationController?.pushViewController(detailViewController, animated: true)
+        presenter.tapOnTheComment(comment: comment)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
 }
 
 extension MainViewController: UITableViewDataSource {
